@@ -1,0 +1,134 @@
+#+TITLE: Spacemacs: the Lightsaber for the Modern Jedi
+
+** Description:
+   We'll take a gentle stroll with [[http://spacemacs.org][Spacemacs]], a modern development environment
+   built on top of [[https://emacs.org][Emacs]] and its [[https://melpa.org][rich ecosystem of packages]].
+
+   In this two-hour workshop we'll cover:
+ - General use of [[http://spacemacs.org][Spacemacs]].
+ - Git coding workflows with [[https://magit.vc][magit]].
+ - Note-taking and task management with [[https://orgmode.org][Org mode]].
+
+** Brain Requirements
+ - Keyboard-driven attitude.  Mice haters welcome! ;-)
+ - Basic handling of [[https://en.wikipedia.org/wiki/Vi][vi]]/[[https://www.vim.org][vim]] desirable, but not necessary.
+ - Be comfortable working with [[https://git-scm.org][Git]].
+ - Willing to have fun with text files.
+ - If you shed a tear or two watching [[http://www.dougengelbart.org/content/view/209/448/][The Mother of All Demos]],
+   you'll feel at home with [[https://orgmode.org][Org mode]].
+
+** Hardware Requirements
+   Bring your laptop with you. A tablet with discrete keyboard and
+   [[https://openssh.com][ssh]]/[[https://mosh.org][mosh]] connection to a
+   remote server will do as well.
+
+** Software Requirements
+
+*** Unsupported Platforms
+    No way to install the required *Emacs 26.3* on these other that building it
+    from source.  You are welcome to try, though.
+
+    - RHEL
+    - CentOS
+
+*** Supported Platforms
+
+    - GNU/Linux distro:
+      - Arch Linux
+      - Ubuntu 19.10
+      - Ubuntu 18.04.3
+      - Debian 10.1
+      - Fedora 31
+      - Fedora 30
+
+    - macOS
+
+    - Microsoft Windows®
+
+*** Software to install *before* the workshop
+    In order to make the most of the time available, please have these installed beforehand:
+    - [[https://git-scm.org][Git]]
+      - GNU/Linux distro: The version that your distro ships will do.
+      - macOS: Available with the Xcode Command Line Utils.
+      - Microsoft Windows®: Get a suitable version from [[https://git-scm.org/download/win][here]].
+
+    - Emacs 26.3
+      - GNU/Linux distro:
+        - Arch Linux
+
+          Ships current version of Emacs.  Install the usual way:
+
+          #+BEGIN_SRC sh
+            pacman -S emacs
+          #+END_SRC
+
+        - Ubuntu 19.10
+
+          Ships current version of Emacs.  Install the usual way:
+
+          #+BEGIN_SRC sh
+            apt install emacs
+          #+END_SRC
+
+        - Ubuntu 18.04.3
+
+          Ships with Emacs 26.2, so in order to install Emacs 26.3, we can leverage =snap=:
+
+          #+BEGIN_SRC sh
+            snap install --classic emacs
+          #+END_SRC
+
+          then logout or restart.
+
+        - Debian 10.1
+
+          Ships with Emacs 26.1, so in order to install Emacs 26.3, we can leverage =snap=:
+
+          #+BEGIN_SRC sh
+            apt install snapd
+            snap install --classic emacs
+          #+END_SRC
+
+          then logout or restart.
+
+        - Fedora 31
+
+          Ships Emacs 26.2, because Emacs 26.3 was released /one day/
+          after the beta freeze of Fedora 31.  That's bad luck!
+
+          Nevertheless, a package of Emacs 26.3 is available from [[https://koji.fedoraproject.org/koji/buildinfo?buildID=1376499][koji]], and can
+          be installed easily:
+
+          #+BEGIN_SRC sh
+            mkdir emacs && cd emacs
+            koji download-build -a x86_64 -a noarch 1376499
+            dnf install *.rpm
+          #+END_SRC
+
+        - Fedora 30
+
+          Ships with Emacs 26.2, so in order to install Emacs 26.3, we can leverage =snap=:
+
+          #+BEGIN_SRC sh
+            snap install --classic emacs
+          #+END_SRC
+
+          then logout or restart.
+
+      - macOS: See the install [[https://www.gnu.org/software/emacs/download.html#macos][instructions]].
+
+      - Microsoft Windows®: See the install [[https://www.gnu.org/software/emacs/download.html#windows][instructions]].
+
+    - Spacemacs
+
+      #+BEGIN_SRC sh
+        # Clone repo as described in http://spacemacs.org
+        git clone https://github.com/syl20bnr/spacemacs.git ~/.emacs.d
+
+        # Download config file with tweaks for the workshop
+        wget https://raw.githubusercontent.com/panchoh/spacemacs-workshop/master/dot-spacemacs -O ~/.spacemacs
+
+        # Bootstrap Spacemacs non-interactively
+        emacs --batch --load=~/.emacs.d/init.el
+      #+END_SRC
+      After a few minutes all required dependencies will be installed.
